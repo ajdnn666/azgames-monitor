@@ -1,0 +1,73 @@
+name: 游戏监控
+
+on:
+  schedule:
+    # 每小时运行一次 (UTC时间)
+    - cron: '0 * * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: 设置 Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: 安装依赖
+      run: |
+        pip install -r requirements.txt
+    
+    - name: 运行监控
+      run: |
+        python monitor.py
+    
+    - name: 读取检测结果
+      id: check_result
+      run: |
+        if [ -f has_new_games.txt ]; then
+          HAS_NEW=$(cat has_new_games.txt)
+          echo "has_new_games=$HAS_NEW" >> $GITHUB_OUTPUT
+        else
+          echo "has_new_games=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: 创建 Issue（如果有新游戏）
+      if: steps.check_result.outputs.has_new_games == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const report = fs.readFileSync('report.md', 'utf8');
+          const date = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+          
+          await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: `🎮 发现新游戏 - ${date}`,
+            body: report,
+            labels: ['new-games', 'automated']
+          });
+    
+    - name: 提交数据更新
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add games_data.json
+        git diff --quiet && git diff --staged --quiet || git commit -m "更新游戏数据 - $(date +'%Y-%m-%d %H:%M:%S')"
+    
+    - name: 推送更改
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}

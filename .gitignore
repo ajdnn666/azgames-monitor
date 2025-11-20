@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 临时文件
+report.md
+has_new_games.txt
+debug_html.py
+debug_page.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 环境变量
+.env
