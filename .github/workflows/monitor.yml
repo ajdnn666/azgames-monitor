@@ -42,6 +42,28 @@ jobs:
           echo "has_new_games=false" >> $GITHUB_OUTPUT
         fi
     
+    - name: 推送到企业微信
+      if: steps.check_result.outputs.has_new_games == 'true'
+      run: |
+        # 读取报告并转换为企业微信 Markdown 格式
+        REPORT=$(cat report.md | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+        DATE=$(date +'%Y-%m-%d %H:%M:%S')
+        
+        # 发送到企业微信
+        if [ -n "${{ secrets.WECOM_WEBHOOK }}" ]; then
+          curl -X POST "${{ secrets.WECOM_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"msgtype\": \"markdown\",
+              \"markdown\": {
+                \"content\": \"## 🎮 AZGames 新游戏通知\n\n**检测时间**: ${DATE}\n\n${REPORT}\n\n> 💡 点击游戏名称即可访问\"
+              }
+            }"
+          echo "✅ 已推送到企业微信"
+        else
+          echo "⚠️ 未配置 WECOM_WEBHOOK，跳过企业微信推送"
+        fi
+    
     - name: 创建 Issue（如果有新游戏）
       if: steps.check_result.outputs.has_new_games == 'true'
       uses: actions/github-script@v7

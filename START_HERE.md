@@ -18,7 +18,7 @@ git commit -m "初始化 AZGames 监控系统"
 git branch -M main
 
 # 5. 添加远程仓库（替换为你的仓库地址）
-git remote add origin https://github.com/你的用户名/azgames-monitor.git
+git remote add origin https://github.com/ajdnn666/azgames-monitor.git
 
 # 6. 推送到 GitHub
 git push -u origin main
@@ -47,17 +47,26 @@ git push -u origin main
 
 ## 📬 接收通知
 
-### 方法1：邮件通知（推荐）
+### 方法1：微信推送（最推荐）⭐
+1. 访问 [Server酱官网](https://sct.ftqq.com/) 微信扫码登录
+2. 复制你的 SendKey
+3. 在 GitHub 仓库 **Settings** → **Secrets and variables** → **Actions**
+4. 添加 Secret：Name 填 `SERVERCHAN_KEY`，Value 填你的 SendKey
+5. 完成！新游戏会直接推送到微信
+
+**详细配置**：查看 `微信推送配置.md` 文件
+
+### 方法2：邮件通知
 - 进入 GitHub **Settings** → **Notifications**
 - 确保 **Issues** 通知已启用
 - 新游戏会发送到你的邮箱
 
-### 方法2：移动应用
+### 方法3：移动应用
 - 下载 GitHub App
 - 登录后启用通知
 - 实时接收推送
 
-### 方法3：查看 Issues
+### 方法4：查看 Issues
 - 直接访问仓库的 **Issues** 页面
 - 查看所有新游戏记录
 
