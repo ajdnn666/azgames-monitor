@@ -1,6 +1,14 @@
 {
   "trending-games": [
     {
+      "name": "Slope 2",
+      "url": "https://azgames.io/slope-2"
+    },
+    {
+      "name": "Escape Road City 2",
+      "url": "https://azgames.io/escape-road-city-2"
+    },
+    {
       "name": "Slope Rider",
       "url": "https://azgames.io/slope-rider"
     },
@@ -15,6 +23,10 @@
     {
       "name": "Cowboy Safari",
       "url": "https://azgames.io/cowboy-safari"
+    },
+    {
+      "name": "Snow Road",
+      "url": "https://azgames.io/snow-road"
     },
     {
       "name": "Rocket Fortress",
@@ -107,20 +119,24 @@
   ],
   "hot-games": [
     {
-      "name": "Wacky Flip",
-      "url": "https://azgames.io/wacky-flip"
+      "name": "Slope 2",
+      "url": "https://azgames.io/slope-2"
     },
     {
       "name": "Escape Road City 2",
       "url": "https://azgames.io/escape-road-city-2"
     },
     {
-      "name": "Slope 2",
-      "url": "https://azgames.io/slope-2"
-    },
-    {
       "name": "Traffic Road",
       "url": "https://azgames.io/traffic-road"
+    },
+    {
+      "name": "Slope Rider",
+      "url": "https://azgames.io/slope-rider"
+    },
+    {
+      "name": "Wacky Flip",
+      "url": "https://azgames.io/wacky-flip"
     },
     {
       "name": "Bike Xtreme",
@@ -141,6 +157,10 @@
     {
       "name": "Tap Road",
       "url": "https://azgames.io/tap-road"
+    },
+    {
+      "name": "Golf Hit",
+      "url": "https://azgames.io/golf-hit"
     },
     {
       "name": "Curve Rush",
