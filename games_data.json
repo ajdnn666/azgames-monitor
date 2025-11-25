@@ -1,12 +1,12 @@
 {
   "trending-games": [
     {
-      "name": "Slope 2",
-      "url": "https://azgames.io/slope-2"
-    },
-    {
       "name": "Slope Rider",
       "url": "https://azgames.io/slope-rider"
+    },
+    {
+      "name": "Slope 2",
+      "url": "https://azgames.io/slope-2"
     },
     {
       "name": "Escape Road City 2",
@@ -119,12 +119,12 @@
   ],
   "hot-games": [
     {
-      "name": "Slope 2",
-      "url": "https://azgames.io/slope-2"
-    },
-    {
       "name": "Slope Rider",
       "url": "https://azgames.io/slope-rider"
+    },
+    {
+      "name": "Slope 2",
+      "url": "https://azgames.io/slope-2"
     },
     {
       "name": "Escape Road City 2",
