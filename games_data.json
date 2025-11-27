@@ -241,12 +241,12 @@
   ],
   "popular-games": [
     {
-      "name": "Retro Bowl",
-      "url": "https://azgames.io/retro-bowl"
-    },
-    {
       "name": "Geometry Dash",
       "url": "https://azgames.io/geometry-dash"
+    },
+    {
+      "name": "Retro Bowl",
+      "url": "https://azgames.io/retro-bowl"
     },
     {
       "name": "Stickman Hook",
